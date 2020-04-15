@@ -7,6 +7,6 @@ app.use(routes)
 
 app.use(express.json())
 
-app.listen(3330, () => {
+app.listen(3333, () => {
   console.log('API, working fine!')
 });
