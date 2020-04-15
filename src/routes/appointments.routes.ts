@@ -8,7 +8,7 @@ const appointmentsRepositoy = new AppointmentsRepositoy();
 appointmentsRouter.use(express.json())
 
 
-appointmentsRouter.get('/', (request, response)=>{
+appointmentsRouter.get('/', (request, response) => {
   const appointments = appointmentsRepositoy.all()
 
   return response.json(appointments)
@@ -26,7 +26,10 @@ appointmentsRouter.post("/", (request, response) => {
     return response.status(400).json({ message: "This appointment is already booked" })
   }
 
-  const appointment = appointmentsRepositoy.create(provider, parsedDate)
+  const appointment = appointmentsRepositoy.create({
+    provider,
+    date: parsedDate
+  })
 
 
   return response.json(appointment);
