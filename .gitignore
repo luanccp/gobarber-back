@@ -4,3 +4,9 @@ node_modules/
 # Logs
 yarn-debug.log*
 yarn-error.log*
+
+.idea/
+.vscode/
+build/
+tmp/*
+!tmp/.gitkeep
