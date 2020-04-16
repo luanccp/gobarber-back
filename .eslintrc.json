@@ -23,14 +23,20 @@
     "prettier"
   ],
   "rules": {
-    "prettier/prettier":"error",
+    "prettier/prettier": "error",
     "class-methods-use-this": "off",
     "@typescript-eslint/camelcase": "off",
-    "import/extensions":[
+    "@typescript-eslint/no-unused-vars": [
+      "errors",
+      {
+        "argsIgnorePattern": "_"
+      }
+    ],
+    "import/extensions": [
       "errors",
       "ignorePackages",
       {
-        "ts":"never"
+        "ts": "never"
       }
     ]
   },
