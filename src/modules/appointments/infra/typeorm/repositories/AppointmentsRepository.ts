@@ -4,7 +4,7 @@ import { getRepository, Repository } from 'typeorm'
 import IAppointmentsRepository from '@modules/appointments/repositories/IAppointmentsRepository';
 import ICreateAppointmentDTO from '@modules/appointments/dtos/ICreateAppointmentDTO';
 
-class AppointmentsRepositoy implements IAppointmentsRepository {
+class AppointmentsRepository implements IAppointmentsRepository {
 
   private ormRepository: Repository<Appointment>;
 
@@ -31,4 +31,4 @@ class AppointmentsRepositoy implements IAppointmentsRepository {
 
 }
 
-export default AppointmentsRepositoy
+export default AppointmentsRepository
