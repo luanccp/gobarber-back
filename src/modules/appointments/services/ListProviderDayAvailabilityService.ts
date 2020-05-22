@@ -2,7 +2,7 @@ import "reflect-metadata";
 import { injectable, inject } from 'tsyringe';
 
 import IAppointmentsRepository from '../repositories/IAppointmentsRepository';
-import { getDaysInMonth, getDate, getHours } from "date-fns";
+import { getDaysInMonth, getDate, getHours, isAfter } from "date-fns";
 
 
 interface IRequest {
@@ -41,14 +41,19 @@ class ListProviderDayAvailabilityService {
       (_, index) => index + hourStart,
     );
 
+    const currentDate = new Date(Date.now());
+
     const availability = eachHourArray.map(hour => {
       const hasAppointmentInHour = appointments.find(
         appointment => getHours(appointment.date) === hour
       )
 
+      const compareDate = new Date(year, month - 1, day, hour);
+
       return {
         hour,
-        available: !hasAppointmentInHour,
+        // possui apontamento? estou marcando um apontamento para o futuro?
+        available: !hasAppointmentInHour && isAfter(compareDate, currentDate),
       }
     })
     return availability;
