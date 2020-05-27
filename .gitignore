@@ -13,3 +13,7 @@ tmp/*
 
 # covereage tests
 covereage/
+
+.env
+
+ormconfig.json
