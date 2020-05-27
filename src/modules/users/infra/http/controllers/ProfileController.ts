@@ -3,6 +3,7 @@ import { container } from 'tsyringe';
 
 import UpdateProfileService from '@modules/users/services/UpdateProfileService';
 import ShowProfileService from '@modules/users/services/ShowProfileService';
+import { classToClass } from 'class-transformer';
 
 export default class ProfileController {
 
@@ -13,7 +14,7 @@ export default class ProfileController {
 
     delete user.password;
 
-    return response.json(user)
+    return response.json(classToClass(user))
 
   }
 
@@ -31,9 +32,7 @@ export default class ProfileController {
       password
     })
 
-    delete user.password;
-
-    return response.json(user)
+    return response.json(classToClass(user))
   }
 
 }
