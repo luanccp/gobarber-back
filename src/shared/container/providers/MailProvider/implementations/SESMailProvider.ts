@@ -22,7 +22,6 @@ class SESMailProvider implements IMailProvider {
     })
   }
   public async sendMail({ to, from, subject, templateData }: ISendMailDTO): Promise<void> {
-    console.log("FUNCIONOU")
     const {name, email} = mailConfig.defaults.from
     await this.client.sendMail({
       from: {

@@ -21,7 +21,6 @@ class CreateUserService {
     @inject('HashProvider')
     private hashProvider : IHashProvider,
 
-
     @inject('CacheProvider')
     private cacheProvider: ICacheProvider,
   ) { };
