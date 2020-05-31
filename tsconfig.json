@@ -23,5 +23,9 @@
         "shared/*"
       ]
     }
-  }
+  },
+  "exclude": [
+    "covereage",
+    "node_modules",
+  ]
 }
