@@ -27,5 +27,6 @@
   "exclude": [
     "covereage",
     "node_modules",
+    "jest.config.js"
   ]
 }
