@@ -2,7 +2,7 @@ import "reflect-metadata";
 import { injectable, inject } from 'tsyringe';
 
 import IAppointmentsRepository from '../repositories/IAppointmentsRepository';
-import { getDaysInMonth, getDate } from "date-fns";
+import { getDaysInMonth, getDate, isAfter } from "date-fns";
 
 
 interface IRequest {
@@ -35,18 +35,20 @@ class ListProviderMonthAvailabilityService {
     )
 
     const eachDayArray = Array.from(
-      {length:numberOfDaysInMonths},
+      { length: numberOfDaysInMonths },
       (_, index) => index + 1,
     );
 
-    const availability = eachDayArray.map(day =>{
+    const availability = eachDayArray.map(day => {
+
+      const compareDate = new Date(year, month - 1, day, 23, 59, 59)
       const appointmentInDay = appointments.filter(appointment => {
-        return getDate(appointment.date) ===day
+        return getDate(appointment.date) === day
       })
 
       return {
         day,
-        available: appointmentInDay.length < 10
+        available: isAfter(compareDate, new Date()) && appointmentInDay.length < 10
       }
     })
 
